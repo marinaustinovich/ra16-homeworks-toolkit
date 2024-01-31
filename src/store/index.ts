@@ -1,14 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { filmsReducer } from "./slice";
-import { FilmsState } from "./types";
+import { moviesReducer } from "./movies/slice";
+import { MoviesState } from "./movies";
+
+export * from "./movies";
 
 export interface RootState {
-  films: FilmsState;
+  films: MoviesState;
 }
 
 const store = configureStore({
   reducer: {
-    films: filmsReducer,
+    films: moviesReducer,
   },
 });
 
