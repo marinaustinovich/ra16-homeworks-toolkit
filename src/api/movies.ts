@@ -1,20 +1,23 @@
-import axios from 'axios';
-import { MovieDetails, MoviesResponse } from '../store';
+import axios from "axios";
+import { ErrorResponse, MovieDetails, MoviesResponse } from "../store";
 
-const API_URL = process.env.REACT_APP_GET_FILMS_URL;
-const API_KEY = process.env.REACT_APP_API_KEY;
+const API_URL = import.meta.env.VITE_GET_MOVIES_URL;
+const API_KEY = import.meta.env.VITE_API_KEY;
 
-export const searchMovies = async (searchTerm: string): Promise<MoviesResponse> => {
-  const response = await axios.get(`${API_URL}?apikey=${API_KEY}&s=${searchTerm}`);
-  if (response.data.Response === "True") {
-    return response.data;
-  } else {
-    throw new Error(response.data.Error || "Unknown error occurred");
-  }
+export const searchMovies = async (
+  searchTerm: string
+): Promise<MoviesResponse  | ErrorResponse> => {
+  const response = await axios.get(
+    `${API_URL}?apikey=${API_KEY}&s=${searchTerm}`
+  );
+
+  return response.data;
 };
 
-export const getMovieById = async (movieId: string) => {
+export const getMovieById = async (
+  movieId: string
+): Promise<MovieDetails | ErrorResponse> => {
   const response = await axios.get(`${API_URL}?apikey=${API_KEY}&i=${movieId}`);
-  return response.data as MovieDetails;
-  };
-  
+
+  return response.data;
+};

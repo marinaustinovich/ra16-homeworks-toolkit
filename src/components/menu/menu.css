@@ -1,0 +1,19 @@
+.nav-link,
+.navbar-brand {
+  transition: transform 0.2s;
+}
+
+.nav-link:hover,
+.navbar-brand:hover {
+  transform: scale(1.1);
+  color: #0fa1db !important;
+}
+
+.nav-link,
+.navbar-brand {
+  color: #164080 !important;
+}
+
+.nav-link.active {
+  color: #0059ff !important;
+}

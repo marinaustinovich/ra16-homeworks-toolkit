@@ -6,17 +6,25 @@ export type Movie = {
   Poster: string;
 };
 
+export type ErrorResponse = {
+  Response: boolean;
+  Error: string;
+};
+
 export type MoviesResponse = {
   Search: Movie[];
   totalResults: string;
-  Response: boolean;
+  Response: string;
 };
 
 export type MoviesState = {
-  movies: Movie[];
+  movies: Movie[] | null;
   favorites: Movie[];
   totalResults: string;
   selectedMovie: MovieDetails | null;
+  filter: string;
+  errorResponse: ErrorResponse | null;
+  isLoading: boolean
 };
 
 export type MovieDetails = Movie & {

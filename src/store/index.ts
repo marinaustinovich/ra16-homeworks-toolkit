@@ -5,13 +5,14 @@ import { MoviesState } from "./movies";
 export * from "./movies";
 
 export interface RootState {
-  films: MoviesState;
+  movies: MoviesState;
 }
 
 const store = configureStore({
   reducer: {
-    films: moviesReducer,
+    movies: moviesReducer,
   },
 });
 
 export default store;
+export type AppDispatch = typeof store.dispatch;
